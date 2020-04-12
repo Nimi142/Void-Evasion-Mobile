@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Smartphone (please complete the following information):**
  - Device: [e.g. Pixel 3a]
- - OS: [e.g. Android 9]
+ - OS: [e.g. Android 10]
  - Version [e.g. 1]
 - Through Play store?
 
