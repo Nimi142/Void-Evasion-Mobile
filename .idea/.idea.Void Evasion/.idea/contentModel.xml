@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\rappa\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\rappa\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Void Evasion.163004060.00" t="ExcludeRecursive" />
+    <e p="C:\Users\rappa\Unity projects\Void Evasion" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="assests" t="Include">
+          <e p="scripts" t="Include">
+            <e p="Camera.cs" t="Include" />
+            <e p="DeathManager.cs" t="Include" />
+            <e p="LoopBackground.cs" t="Include" />
+            <e p="Main_Menu" t="Include">
+              <e p="Avatar_management.cs" t="Include" />
+              <e p="Button_Manager.cs" t="Include" />
+              <e p="camera_manager.cs" t="Include" />
+              <e p="coin_amount.cs" t="Include" />
+              <e p="Options_script.cs" t="Include" />
+              <e p="quit_manager.cs" t="Include" />
+              <e p="setName.cs" t="Include" />
+            </e>
+            <e p="PauseManager.cs" t="Include" />
+            <e p="Platform.cs" t="Include" />
+            <e p="PlatfromManager.cs" t="Include" />
+            <e p="Play_Button.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="Score.cs" t="Include" />
+            <e p="Shared" t="Include">
+              <e p="MyColor.cs" t="Include" />
+              <e p="storageHandler.cs" t="Include" />
+            </e>
+            <e p="shop" t="Include">
+              <e p="ButtonManager.cs" t="Include" />
+              <e p="PlayerColorManager.cs" t="Include" />
+              <e p="Rainow_Text.cs" t="Include" />
+            </e>
+            <e p="Title" t="Include">
+              <e p="Skip.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="BayatGames" t="Include">
+          <e p="Free Platform Game Assets" t="Include">
+            <e p="README.txt" t="Include" />
+          </e>
+        </e>
+        <e p="FlatCartoonGUI" t="Include">
+          <e p="README.txt" t="Include" />
+        </e>
+        <e p="HSVPicker" t="Include">
+          <e p="Editor" t="Include">
+            <e p="BoxSliderEditor.cs" t="Include" />
+          </e>
+          <e p="Enums" t="Include">
+            <e p="ColorValues.cs" t="Include" />
+          </e>
+          <e p="Events" t="Include">
+            <e p="ColorChangedEvent.cs" t="Include" />
+            <e p="HSVChangedEvent.cs" t="Include" />
+          </e>
+          <e p="Other" t="Include">
+            <e p="ColorPickerTester.cs" t="Include" />
+            <e p="TiltWindow.cs" t="Include" />
+          </e>
+          <e p="README.txt" t="Include" />
+          <e p="Resources" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="Compute" t="Include">
+                <e p="GenerateSVTexture.compute" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="ColorImage.cs" t="Include" />
+            <e p="ColorLabel.cs" t="Include" />
+            <e p="ColorPicker.cs" t="Include" />
+            <e p="ColorPickerSetup.cs" t="Include" />
+            <e p="ColorPresetManager.cs" t="Include" />
+            <e p="ColorPresets.cs" t="Include" />
+            <e p="ColorSlider.cs" t="Include" />
+            <e p="ColorSliderImage.cs" t="Include" />
+            <e p="HexColorField.cs" t="Include" />
+            <e p="SVBoxSlider.cs" t="Include" />
+          </e>
+          <e p="UtilityScripts" t="Include">
+            <e p="BoxSlider.cs" t="Include" />
+            <e p="HSVUtil.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Pixel Bird" t="Include">
+          <e p="Read Me.txt" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Void Evasion.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
