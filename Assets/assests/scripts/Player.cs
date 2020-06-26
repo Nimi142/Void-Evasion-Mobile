@@ -1,4 +1,6 @@
 ﻿using System;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -179,7 +181,6 @@ public class Player : MonoBehaviour
             _lastVolume = _musicManager.GetVolume();
             _currVolume = _musicManager.GetDefaultVolume() / 10;
         }
-
         _darkener.color = new Color(r: _darkener.color.r, g: _darkener.color.g, b: _darkener.color.b, 0.5f);
         maxSpeed = 0.2f;
         _isDead = true;
@@ -189,7 +190,38 @@ public class Player : MonoBehaviour
         _deathManager.coinText.text = "Coins:\n<sprite=0> " + Coin.coinAmount;
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + Coin.coinAmount);
         Coin.coinAmount = 0;
+        ManageGooglePlayStats();
         GC.Collect();
+    }
+
+    private void ManageGooglePlayStats()
+    {
+        if (!PlayGamesPlatform.Instance.IsAuthenticated()) return;
+        // Coins gathered Leaderboard
+        PlayGamesPlatform.Instance.ReportScore(PlayerPrefs.GetInt("CoinAmount"), GPGSIds.leaderboard_coins_gathered, (bool success) => {
+            Debug.Log("Log to coin's play leaderboard result" + success);
+        });
+        // Highscore leaderboard
+        PlayGamesPlatform.Instance.ReportScore(PlayerPrefs.GetInt("Highscore"), GPGSIds.leaderboard_highscores, (bool success) => {
+                Debug.Log("Log to score's play leaderboard result" + success);
+            });
+        // 10 Platforms Achievement
+        if (_pm.GetScore() > 10) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQAg", 100.0f, (bool success) => {
+            // handle success or failure
+        });
+        // 50 Platforms Achievement
+        if (_pm.GetScore() > 50) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQAw", 100.0f, (bool success) => {
+            // handle success or failure
+        });
+        // 100 Platforms Achievement
+        if (_pm.GetScore() > 100) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQBA", 100.0f, (bool success) => {
+            // handle success or failure
+        });
+        // 300 Platform Achievement
+        if (_pm.GetScore() > 300) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQBQ", 100.0f, (bool success) => {
+            // handle success or failure
+        });
+        
     }
 
     public void Restart()

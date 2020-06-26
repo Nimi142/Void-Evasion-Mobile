@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using GooglePlayGames;
+using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,9 +12,11 @@ public class Options_script : MonoBehaviour
     private GameObject _soundX;
     public Transform nameInput;
     public GameObject nameText;
+    private PlayButtons playButtons;
 
     private void Awake()
     {
+        playButtons = Resources.FindObjectsOfTypeAll<PlayButtons>()[0];
         _musicManager = GameObject.Find("Music manager").GetComponent<music>();
         _soundX = transform.Find("Sound Image").transform.Find("Checkmark").gameObject;
         _soundSlider = transform.Find("Sound Slider").GetComponent<Slider>();
@@ -21,6 +26,7 @@ public class Options_script : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
+        SetPlayButton();
         _soundSlider.value = PlayerPrefs.GetFloat("volume");
         nameInput.GetComponent<InputField>().text = PlayerPrefs.GetString("Name");
     }
@@ -39,6 +45,22 @@ public class Options_script : MonoBehaviour
         PlayerPrefs.SetString("Name", value: nameInput.GetComponent<InputField>().text);
         if (SceneManager.GetActiveScene().name.Equals("Main_Menu")) nameText.GetComponent<setName>().UpdateName();
         gameObject.SetActive(false);
+    }
+
+    public void SetPlayButton()
+    {
+        Button button = transform.Find("ConnectToPlayButton").gameObject.GetComponent<Button>();
+        if (PlayGamesPlatform.Instance.IsAuthenticated())
+        {
+            button.image.color = Color.red;
+            button.gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "Disconnect";
+        }
+        else
+        {
+            button.image.color = Color.green;
+            button.gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "Connect";
+            
+        }
     }
 
     public void SetActive()
@@ -60,5 +82,6 @@ public class Options_script : MonoBehaviour
     private void Update()
     {
         _soundX.SetActive(_soundSlider.value < 0.01);
+        SetPlayButton();
     }
 }

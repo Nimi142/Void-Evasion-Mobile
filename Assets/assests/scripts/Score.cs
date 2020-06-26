@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     private TextMeshProUGUI _txt;
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         _txt = GetComponent<TextMeshProUGUI>();
     }

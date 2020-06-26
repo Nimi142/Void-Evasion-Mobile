@@ -52,6 +52,9 @@ public class ButtonManager : MonoBehaviour
         sh.SaveData(colors[1], "InnerColor");
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - _moneyNeeded);
         GameObject.Find("Coins_background").transform.Find("Amount").GetComponent<coin_amount>().UpdateMoney();
+        Social.ReportProgress("CgkIkNbx2-YEEAIQBg", 100.0f, (bool success) => {
+            // handle success or failure
+        });
         confirmManager.SetActive(false);
     }
 

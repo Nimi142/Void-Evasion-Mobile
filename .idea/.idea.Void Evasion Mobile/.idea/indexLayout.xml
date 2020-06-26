@@ -3,13 +3,16 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Library/PackageCache/com.google.external-dependency-manager@1.2.155</Path>
       <Path>Library/PackageCache/com.unity.collab-proxy@1.2.16</Path>
       <Path>Library/PackageCache/com.unity.editorcoroutines@0.1.0-preview.2</Path>
       <Path>Library/PackageCache/com.unity.ext.nunit@1.0.0</Path>
       <Path>Library/PackageCache/com.unity.ide.rider@1.1.4</Path>
       <Path>Library/PackageCache/com.unity.ide.vscode@1.1.4</Path>
+      <Path>Library/PackageCache/com.unity.ide.vscode@1.2.0</Path>
       <Path>Library/PackageCache/com.unity.memoryprofiler@0.2.3-preview.2</Path>
       <Path>Library/PackageCache/com.unity.test-framework@1.1.13</Path>
+      <Path>Library/PackageCache/com.unity.test-framework@1.1.14</Path>
       <Path>Library/PackageCache/com.unity.textmeshpro@2.0.1</Path>
       <Path>Library/PackageCache/com.unity.timeline@1.2.12</Path>
       <Path>Packages</Path>
@@ -17,8 +20,10 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.git</Path>
+      <Path>.github</Path>
       <Path>.idea</Path>
       <Path>.vs</Path>
+      <Path>Builds</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>MemoryCaptures</Path>

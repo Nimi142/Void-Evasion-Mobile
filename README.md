@@ -1,13 +1,10 @@
-# !Outdated, currently being rewritten!
-
 # Void Evasion
-### The android version is currently unavailable, for the computer version, please go to [this repository](https://github.com/Nimi142/Void_Evasion).
 
 # The games's purpose
 The game doesn't have a purpose, the only purpose in the game is for the player to have fun. ~~Survive the longest~~
 # Playing the game
 ## Obtaining the game
-The android version is currently unavailable.
+[A link to the play store page](https://play.google.com/store/apps/details?id=com.NimrodRappaport.VoidEvasion)
 
 ## Playing the game
 ### The main menu
@@ -17,7 +14,7 @@ The android version is currently unavailable.
     - The second button is the "Shop!" button which is located in the lower left corner and redirects to the shop screen.
     - The third button is the "Quit" button, clicking on it will open a prompt for exiting the game.
     - The fourth button is the "Play" button, clicking on it will redirect to the the game scene.
-    
+
  ### The Shop
  - In the shop you will see the color changing shop title, the amount of coins you have, a color picker, a player preview, two toggles and 3 buttons.
      - The first toggle, named "Preview", will let the player change the color of the presented player preview with the presented colorpicker.
@@ -25,7 +22,7 @@ The android version is currently unavailable.
      - The reset button will reset the preview colors to the player's real colors.
      - The Commit button will open a prompt to change the player's colors to be like in the preview for 5000 coins.
      - The Return button will redirect to the main menu.
- 
+
  ### The Game
  In the game, the player needs to avoid falling into the void (hence "Void Evasion"). It's done by jumping between the generated platforms. The player can start to jump as long as they stand on a platform, they can continue to jump by pressing the space bar for as long as they want as long as they do not pass the height of the screen or stop jumping. When the player does pass the height of the screen, they will stop accelerating and a red bar will come out and push the player back onto the proper height.
 Each platform that is being passed correlates to a new coin being earned.

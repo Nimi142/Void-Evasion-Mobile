@@ -54,6 +54,7 @@ public class PlatformManager : MonoBehaviour
         _isCreating = true;
         _rand = new Random();
         _height = _cam.ScreenToWorldPoint(new Vector3(x: Screen.width, y: Screen.height, 0))[1];
+        _score.SetScore(-2);
     }
 
     // Update is called once per frame

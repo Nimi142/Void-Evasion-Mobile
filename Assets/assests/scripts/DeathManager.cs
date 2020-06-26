@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GooglePlayGames;
 
 public class DeathManager : PauseManager
 {
@@ -17,23 +18,28 @@ public class DeathManager : PauseManager
         pm = GameObject.Find("PlatformManager").GetComponent<PlatformManager>();
         deathManager = GameObject.Find("Death manager").GetComponent<DeathManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _scoreText = transform.Find("Final_score").GetComponent<Text>();
+        _highText = transform.Find("High_score").GetComponent<TextMeshProUGUI>();
     }
 
     protected new void Start()
     {
-        _scoreText = transform.Find("Final_score").GetComponent<Text>();
-        _highText = transform.Find("High_score").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         _scoreText.text = "Score: " + pm.GetScore();
-        if (pm.GetScore() > PlayerPrefs.GetInt("Highscore")) PlayerPrefs.SetInt("Highscore", pm.GetScore());
+        if (pm.GetScore() > PlayerPrefs.GetInt("Highscore"))
+        {
+
+            PlayerPrefs.SetInt("Highscore", pm.GetScore());
+        }
         _highText.text = "High Score:\n<sprite=0> " + PlayerPrefs.GetInt("Highscore");
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) Restart();
     }
+    
 
     public override void Restart()
     {
