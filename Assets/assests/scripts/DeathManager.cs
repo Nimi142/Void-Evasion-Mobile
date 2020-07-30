@@ -14,12 +14,12 @@ public class DeathManager : PauseManager
     // Start is called before the first frame update
     public new void Awake()
     {
-        coinText = transform.Find("Coin_Amount").GetComponent<TextMeshProUGUI>();
+        coinText = GameObject.Find("Coin_Amount").GetComponent<TextMeshProUGUI>();
         pm = GameObject.Find("PlatformManager").GetComponent<PlatformManager>();
         deathManager = GameObject.Find("Death manager").GetComponent<DeathManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        _scoreText = transform.Find("Final_score").GetComponent<Text>();
-        _highText = transform.Find("High_score").GetComponent<TextMeshProUGUI>();
+        _scoreText = GameObject.Find("Final_score").GetComponent<Text>();
+        _highText = GameObject.Find("High_score").GetComponent<TextMeshProUGUI>();
     }
 
     protected new void Start()

@@ -85,15 +85,18 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 currentPosition = transform.position;
-        if (!_isDead && !_options.activeSelf) _currVolume = _musicManager.GetDefaultVolume();
-        if (Mathf.Abs(_musicManager.GetVolume() - _currVolume) > 0.001 && !_options.activeSelf)
+        if (_musicManager != null)
         {
-            _musicInterpolation += Time.deltaTime * 4;
-            _musicManager.SetVolume(Mathf.Lerp(a: _lastVolume, b: _currVolume, t: _musicInterpolation));
-        }
-        else
-        {
-            _musicInterpolation = 0;
+            if (!_isDead && !_options.activeSelf) _currVolume = _musicManager.GetDefaultVolume();
+            if (Mathf.Abs(_musicManager.GetVolume() - _currVolume) > 0.001 && !_options.activeSelf)
+            {
+                _musicInterpolation += Time.deltaTime * 4;
+                _musicManager.SetVolume(Mathf.Lerp(a: _lastVolume, b: _currVolume, t: _musicInterpolation));
+            }
+            else
+            {
+                _musicInterpolation = 0;
+            }
         }
 
         _rb.velocity = new Vector2(x: maxSpeed, _rb.velocity[1]);

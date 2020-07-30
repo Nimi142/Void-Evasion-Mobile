@@ -16,6 +16,7 @@
               <e p="back.cs" t="Include" />
             </e>
             <e p="DeathManager.cs" t="Include" />
+            <e p="FlexibleGridLayout.cs" t="Include" />
             <e p="LoopBackground.cs" t="Include" />
             <e p="Main_Menu" t="Include">
               <e p="Avatar_management.cs" t="Include" />
