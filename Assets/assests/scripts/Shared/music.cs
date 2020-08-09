@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
@@ -7,7 +8,6 @@ public class music : MonoBehaviour
 {
     private static bool _isSpawned;
     private AudioSource _auds;
-    private string _currentScene;
     private float _defaultVolume;
     private float _interpolationRate;
     private float _interpolationStatus;
@@ -30,14 +30,13 @@ public class music : MonoBehaviour
             Destroy(obj: gameObject);
             return;
         } // For some reason it also kills the first object
-        if (PlayerPrefs.GetInt("was_volume_changed") == 0) PlayerPrefs.SetFloat("volume",0.5f); 
         _isSpawned = true;
+        if (PlayerPrefs.GetInt("was_volume_changed") == 0) PlayerPrefs.SetFloat("volume",0.5f);
         _isPlaying = false;
         _previousTracks = new[] {-1, -1, -1}; // [Game, Menu, Shop]
         _interpolationRate = 3;
         _interpolationStatus = 0;
         _defaultVolume = PlayerPrefs.GetFloat("volume");
-        _currentScene = "Title";
         _auds = GetComponent<AudioSource>();
         _auds.volume = _defaultVolume;
         _rand = new Random();
@@ -58,11 +57,45 @@ public class music : MonoBehaviour
             if (i < menuMusicsLength) menuMusicsNames[i] = menuMusics[i].name;
             if (i < shopMusicsLength) shopMusicsNames[i] = shopMusics[i].name;
         }
-
-        gameMusics = null;
-        menuMusics = null;
-        shopMusics = null;
+        
         Resources.UnloadUnusedAssets();
+        SceneManager.activeSceneChanged += ChangeScene;
+    }
+
+    private void ChangeScene(Scene oldScene, Scene newScene)
+    {
+        String newSceneName = newScene.name;
+        int newClipIndex;
+        string newClipName = "";
+        switch (newSceneName)
+        {
+            case "SampleScene":
+                newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
+                while (newClipIndex == _previousTracks[0] && gameMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
+
+                _previousTracks[0] = newClipIndex;
+                newClipName = gameMusicsNames[newClipIndex];
+                break;
+            case "Main_Menu":
+                newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
+                while (newClipIndex == _previousTracks[1] && menuMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
+
+                _previousTracks[1] = newClipIndex;
+                newClipName = menuMusicsNames[newClipIndex];
+                break;
+            case "Shop":
+                newClipIndex = _rand.Next(0, maxValue: shopMusicsLength);
+                while (newClipIndex == _previousTracks[2] && shopMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: shopMusicsLength);
+
+                _previousTracks[2] = newClipIndex;
+                newClipName = shopMusicsNames[newClipIndex];
+                break;
+        }
+
+        _newAudio = Resources.Load<AudioClip>("music\\" + newSceneName + "\\" + newClipName);
+
+        if (PlayerPrefs.GetFloat("volume") > 0.01) _interpolationStatus = 0;
+        if (_defaultVolume < 0.01) _auds.clip = _newAudio;
     }
 
     // Update is called once per frame
@@ -96,42 +129,6 @@ public class music : MonoBehaviour
             _isPlaying = true;
             _auds.UnPause();
             if (!_auds.isPlaying) _auds.Play();
-        }
-
-        if (SceneManager.GetActiveScene().name != _currentScene)
-        {
-            _currentScene = SceneManager.GetActiveScene().name;
-            int newClipIndex;
-            string newClipName = "";
-            switch (_currentScene)
-            {
-                case "SampleScene":
-                    newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
-                    while (newClipIndex == _previousTracks[0] && gameMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
-
-                    _previousTracks[0] = newClipIndex;
-                    newClipName = gameMusicsNames[newClipIndex];
-                    break;
-                case "Main_Menu":
-                    newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
-                    while (newClipIndex == _previousTracks[1] && menuMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
-
-                    _previousTracks[1] = newClipIndex;
-                    newClipName = menuMusicsNames[newClipIndex];
-                    break;
-                case "Shop":
-                    newClipIndex = _rand.Next(0, maxValue: shopMusicsLength);
-                    while (newClipIndex == _previousTracks[2] && shopMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: shopMusicsLength);
-
-                    _previousTracks[2] = newClipIndex;
-                    newClipName = shopMusicsNames[newClipIndex];
-                    break;
-            }
-
-            _newAudio = Resources.Load<AudioClip>("music\\" + _currentScene + "\\" + newClipName);
-
-            if (PlayerPrefs.GetFloat("volume") > 0.01) _interpolationStatus = 0;
-            if (_defaultVolume < 0.01) _auds.clip = _newAudio;
         }
     }
 

@@ -10,17 +10,12 @@ public class Options_script : MonoBehaviour
     private music _musicManager;
     private Slider _soundSlider;
     private GameObject _soundX;
-    public Transform nameInput;
-    public GameObject nameText;
-    private PlayButtons playButtons;
 
     private void Awake()
     {
-        playButtons = Resources.FindObjectsOfTypeAll<PlayButtons>()[0];
         _musicManager = GameObject.Find("Music manager").GetComponent<music>();
         _soundX = transform.Find("Sound Image").transform.Find("Checkmark").gameObject;
         _soundSlider = transform.Find("Sound Slider").GetComponent<Slider>();
-        nameInput = transform.Find("SetName");
     }
 
     // Start is called before the first frame update
@@ -28,7 +23,6 @@ public class Options_script : MonoBehaviour
     {
         SetPlayButton();
         _soundSlider.value = PlayerPrefs.GetFloat("volume");
-        nameInput.GetComponent<InputField>().text = PlayerPrefs.GetString("Name");
     }
 
     public void OnSoundSliderValueChange(float value)
@@ -42,8 +36,6 @@ public class Options_script : MonoBehaviour
         PlayerPrefs.SetInt("was_volume_changed",1);
         PlayerPrefs.SetFloat("volume", value: _soundSlider.value);
         _musicManager.UpdateDefaultVolume();
-        PlayerPrefs.SetString("Name", value: nameInput.GetComponent<InputField>().text);
-        if (SceneManager.GetActiveScene().name.Equals("Main_Menu")) nameText.GetComponent<setName>().UpdateName();
         gameObject.SetActive(false);
     }
 
