@@ -5,7 +5,6 @@ The game doesn't have a purpose, the only purpose in the game is for the player 
 ## Obtaining the game
 [A link to the play store page](https://play.google.com/store/apps/details?id=com.NimrodRappaport.VoidEvasion)
 
----
 ## Playing the game
 ### The main menu
 ![Main Menu](./Assets/assests/images/Screenshots/Menu.png "Main menu")
