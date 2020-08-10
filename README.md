@@ -7,10 +7,9 @@ The game doesn't have a purpose, the only purpose in the game is for the player 
 
 ---
 ## Playing the game
----
 ### The main menu
 ![Main Menu](./Assets/assests/images/Screenshots/Menu.png "Main menu")
-- In the main page, you will see the game's title ("Void Evasion"), Two large buttons, and four small ones. One in the left side and three in the right.
+- In the main page, you will see the game's title ("Void Evasion"), Two large buttons, and four small ones. Three in the left side and one in the right.
     - The coin emblem with the number near it signifies the number of coins that you have, the coins can be used in the shop.
     - The first small button to the left is the "Settings" button. pressing on it will let you change the sound volume, see the credits, and manage your connection to google play games.
     - The other two small buttons to the left may not appear. They are linked to the connection with google play services and represent the achievements and leaderboards.
