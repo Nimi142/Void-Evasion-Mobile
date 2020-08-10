@@ -61,3 +61,11 @@ crashlytics-build.properties
 
 # private keys
 *.keystore
+
+# Jetbrains
+.idea/
+
+# Unimportant stuff
+Recordings/
+ProfilerData/
+

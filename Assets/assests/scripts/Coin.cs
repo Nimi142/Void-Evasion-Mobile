@@ -1,4 +1,5 @@
-﻿using GooglePlayGames;
+﻿using System;
+using GooglePlayGames;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -15,20 +16,23 @@ public class Coin : MonoBehaviour
         _col = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!_col.IsTouching(_player.GetComponent<Collider2D>())) return;
+        if (other.gameObject.GetComponent<Player>() == null) return;
         coinAmount++;
         PlayerPrefs.SetInt("CoinAmount",PlayerPrefs.GetInt("CoinAmount")+1);
         Destroy(obj: gameObject);
         PlayGamesPlatform.Instance.IncrementAchievement(
             "CgkIkNbx2-YEEAIQBw", 1, (bool success) => {
                 // handle success or failure
-            });
+            }); // 500 coins.
         PlayGamesPlatform.Instance.IncrementAchievement(
             "CgkIkNbx2-YEEAIQCA", 1, (bool success) => {
                 // handle success or failure
-            });
+            }); // 1,000 coins.
+        PlayGamesPlatform.Instance.IncrementAchievement(
+            "", 1, (bool success) => {
+                // handle success or failure
+            }); // 10,000 coins.
     }
 }

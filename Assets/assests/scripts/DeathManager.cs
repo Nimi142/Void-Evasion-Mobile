@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +25,19 @@ public class DeathManager : PauseManager
 
     protected new void Start()
     {
+    }
+
+    private void OnEnable()
+    {
+        try
+        {
+            PlayerPrefs.SetInt("NumPlatforms", PlayerPrefs.GetInt("NumPlatforms") + pm.GetScore());
+        }
+        catch (NullReferenceException e)
+        {
+            // death manager loads when scene initializes.
+        }
+
     }
 
     // Update is called once per frame

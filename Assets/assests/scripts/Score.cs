@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using GooglePlayGames;
+using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour

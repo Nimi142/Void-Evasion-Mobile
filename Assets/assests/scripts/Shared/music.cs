@@ -40,7 +40,7 @@ public class music : MonoBehaviour
         _auds = GetComponent<AudioSource>();
         _auds.volume = _defaultVolume;
         _rand = new Random();
-        AudioClip[] gameMusics = Resources.LoadAll<AudioClip>("music\\SampleScene");
+        AudioClip[] gameMusics = Resources.LoadAll<AudioClip>("music\\Game");
         AudioClip[] menuMusics = Resources.LoadAll<AudioClip>("music\\Main_Menu");
         AudioClip[] shopMusics = Resources.LoadAll<AudioClip>("music\\Shop");
         _newAudio = menuMusics[0];
@@ -69,16 +69,21 @@ public class music : MonoBehaviour
         string newClipName = "";
         switch (newSceneName)
         {
-            case "SampleScene":
-                newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
-                while (newClipIndex == _previousTracks[0] && gameMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
+            case "Game":
+                do
+                {
+                    newClipIndex = _rand.Next(0, maxValue: gameMusicsLength);
+                }
+                while (newClipIndex == _previousTracks[0] && gameMusicsLength > 1);
 
                 _previousTracks[0] = newClipIndex;
                 newClipName = gameMusicsNames[newClipIndex];
                 break;
             case "Main_Menu":
-                newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
-                while (newClipIndex == _previousTracks[1] && menuMusicsLength > 1) newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
+                do
+                {
+                    newClipIndex = _rand.Next(0, maxValue: menuMusicsLength);
+                } while (newClipIndex == _previousTracks[1] && menuMusicsLength > 1);
 
                 _previousTracks[1] = newClipIndex;
                 newClipName = menuMusicsNames[newClipIndex];

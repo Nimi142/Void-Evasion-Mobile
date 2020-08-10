@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public float timeScale;
+    
     private Camera _cam;
     private BoxCollider2D _col;
     private float _currVolume;
@@ -33,9 +35,14 @@ public class Player : MonoBehaviour
     public float acceleration;
     public bool isDebug;
     public float maxSpeed;
+    private bool landedOnEdge;
+
+    public int numFlownPlatforms; // Number of platforms passed without touching the ground.
+    public int maxFlownPlatforms;
 
     private void Awake()
     {
+        Time.timeScale = timeScale;
         _options = GameObject.Find("Canvas").transform.Find("Options").gameObject;
         _currVolume = 0.5f;
         _musicInterpolation = 0;
@@ -105,6 +112,12 @@ public class Player : MonoBehaviour
         Vector3 vAngle = new Vector3(0, 0, 0);
         v[0] += acceleration;
         vAngle[0] = 1;
+        // If is on platform:
+        if (IsOnPlatform())
+        {
+            numFlownPlatforms = -1;
+        }
+        
         // Check jump
         if (Input.GetKey("space") && isDebug || Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Ended && !_isStartJump && (_rb.velocity[1] > 0 && _isJumping || -0.001 < _rb.velocity[1] && _rb.velocity[1] < 0.001 && IsOnPlatform()))
         {
@@ -112,6 +125,8 @@ public class Player : MonoBehaviour
             v[1] += acceleration;
             vAngle[1] = 1;
         }
+        
+
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.touchCount == 0)
         {
@@ -224,7 +239,18 @@ public class Player : MonoBehaviour
         if (_pm.GetScore() > 300) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQBQ", 100.0f, (bool success) => {
             // handle success or failure
         });
-        
+        // Airborne
+        if (maxFlownPlatforms >= 4) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQCw", 100.0f, (bool success) => {
+            // handle success or failure
+        });
+        // Hoarder
+        if (PlayerPrefs.GetInt("Money") > 5000) PlayGamesPlatform.Instance.ReportProgress("CgkIkNbx2-YEEAIQDQ", 100.0f, (bool success) => {
+            // handle success or failure
+        }); 
+        // 10,000 platforms overtime
+        PlayGamesPlatform.Instance.IncrementAchievement("CgkIkNbx2-YEEAIQDA", _pm.GetScore(), (bool success) => {
+            // handle success or failure
+        }); 
     }
 
     public void Restart()

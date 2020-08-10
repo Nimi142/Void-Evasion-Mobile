@@ -101,6 +101,8 @@ public class PlatformManager : MonoBehaviour
             {
                 _platforms[i].Reach();
                 _score.SetScore(_score.GetScore() + 1);
+                _player.numFlownPlatforms++;
+                if (_player.maxFlownPlatforms < _player.numFlownPlatforms) _player.maxFlownPlatforms = _player.numFlownPlatforms;
             }
 
             if (_platforms[i].GetPosition()[0] < _position[0] - (width / 2) - (_basicWidth / 2)) Destroy(_platformsObjects[i]);

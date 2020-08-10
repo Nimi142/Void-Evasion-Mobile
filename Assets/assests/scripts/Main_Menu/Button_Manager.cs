@@ -11,7 +11,7 @@ public class Button_Manager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadSceneAsync("SampleScene", mode: LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Game", mode: LoadSceneMode.Single);
     }
 
     public void Shop()
